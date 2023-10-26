@@ -5,26 +5,49 @@ package laboratorio.c;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-import laboratorio.c.Musica;
+
 
 public class App {
 
+    public static List<Musica> pesquisarPorGenero(List<Musica> musicas, String genero) {
+        List<Musica> musicasPorGenero = new ArrayList<>();
+
+        for (Musica musica : musicas) {
+            if (musica.getGenero().equalsIgnoreCase(genero)) {
+                musicasPorGenero.add(musica);
+            }
+        }
+
+        return musicasPorGenero;
+    }
+
     public static void main(String[] args) {
+        // Criar uma lista de músicas
         List<Musica> musicas = new ArrayList<>();
 
-        // Criar algumas músicas de exemplo
-        Musica musica1 = new Musica(1, "Música 1", "Artista 1", "Pop", 2022, "Álbum 1", 3.5, "Letra da Música 1");
-        Musica musica2 = new Musica(2, "Música 2", "Artista 2", "Rock", 2020, "Álbum 2", 4.2, "Letra da Música 2");
+        // Adicionar músicas à lista (exemplos)
+        musicas.add(new Musica(1, "Demanda", "Sain", "HipHop", 2023, "KTT ZOO", 2.35, "..."));
+        musicas.add(new Musica(2, "Wonderwall", "Oasis", "Rock", 1995, "Morning Glory?", 4.18, "..."));
+        musicas.add(new Musica(3, "Como tudo deve ser", "Charlie Brown Jr", "Rock", 2001, "100% Charlie Brown Jr", 4.33, "..."));
 
-        // Adicionar as músicas à lista
-        musicas.add(musica1);
-        musicas.add(musica2);
+        // Pesquisar músicas por gênero
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o gênero que deseja pesquisar: ");
+        String generoPesquisado = scanner.nextLine();
+        
+        List<Musica> musicasEncontradas = pesquisarPorGenero(musicas, generoPesquisado);
 
-        // Exibir informações das músicas
-        for (Musica musica : musicas) {
-            System.out.println(musica);
-            System.out.println();
+        // Exibir músicas encontradas
+        if (musicasEncontradas.isEmpty()) {
+            System.out.println("Nenhuma música encontrada no gênero " + generoPesquisado);
+        } else {
+            System.out.println("Músicas encontradas no gênero " + generoPesquisado + ":");
+            for (Musica musica : musicasEncontradas) {
+                System.out.println(musica);
+                System.out.println();
+            }
         }
     }
 }
