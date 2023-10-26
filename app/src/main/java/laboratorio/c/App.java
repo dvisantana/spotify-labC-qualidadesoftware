@@ -3,12 +3,28 @@
  */
 package laboratorio.c;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import laboratorio.c.Musica;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        List<Musica> musicas = new ArrayList<>();
+
+        // Criar algumas músicas de exemplo
+        Musica musica1 = new Musica(1, "Música 1", "Artista 1", "Pop", 2022, "Álbum 1", 3.5, "Letra da Música 1");
+        Musica musica2 = new Musica(2, "Música 2", "Artista 2", "Rock", 2020, "Álbum 2", 4.2, "Letra da Música 2");
+
+        // Adicionar as músicas à lista
+        musicas.add(musica1);
+        musicas.add(musica2);
+
+        // Exibir informações das músicas
+        for (Musica musica : musicas) {
+            System.out.println(musica);
+            System.out.println();
+        }
     }
 }

@@ -1,4 +1,4 @@
-package main.java.laboratorio.c;
+package laboratorio.c;
 
 public class Musica {
     private int id;
